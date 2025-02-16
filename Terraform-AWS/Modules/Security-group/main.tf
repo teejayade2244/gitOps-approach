@@ -2,7 +2,7 @@
 resource "aws_security_group" "main_sg" {
   name        = var.sg_name
   description = var.sg_description
-  vpc_id      = aws_vpc.main_vpc.id # Assuming you have a VPC resource
+  vpc_id      = var.vpc_id
 
   # Dynamic ingress rules
   dynamic "ingress" {

@@ -12,6 +12,8 @@ Private_subnets = {
 project_name = "Blackrose"
 region = "eu-west-2"
 
+#############################################################################
+
 # Common Ingress Rules (Used in Both Security Groups)
 common_ingress_rules = [
   {
@@ -34,6 +36,7 @@ common_ingress_rules = [
   },
 ]
 
+###############################################################################################
 # Security Group 1 (Main SG)
 main_sg1_name        = "Main-SG"
 main_sg1_description = "General Purpose Security Group"
@@ -56,3 +59,15 @@ EC2_sg_extra_ports = [
     cidr_blocks = ["0.0.0.0/0"]
   },
 ]
+
+#######################################################################################
+# S3 Buckets
+# Remote Backend
+state_locking_s3_bucket_name = "Terraform_state_lock_remote-backend"
+state_locking_s3_bucket_description = "This a s3 bucket to store terraform state file"
+
+########################################################################################
+# Dynamo DB
+# Remote Backend
+dynamo_db_name_remote-backend = "Terraform_state_remote-backend"
+

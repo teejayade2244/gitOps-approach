@@ -1,11 +1,6 @@
-#VPC
+# VPC and subnets 
 variable "cidr_block" {
   description = "VPC CIDR block"
-  type        = string
-}
-
-variable "vpc_id" {
-  description = "The VPC ID where the security group will be created"
   type        = string
 }
 
@@ -98,5 +93,25 @@ variable "EC2_sg_extra_ports" {
     cidr_blocks = list(string)
   }))
   default = []
+}
+
+#################################################################################################
+# s3 buckets
+# Remote-Backend
+variable "state_locking_s3_bucket_name" {
+  type = string
+  description = "specify s3 bucket name for terraform state locking"
+}
+
+variable "state_locking_s3_bucket_description" {
+   type = string
+   description = "specify s3 bucket description for terraform state locking"
+}
+
+##########################################################################################################
+# Dynamo DB
+# Remote-Backend
+variable "dynamo_db_name_remote-backend" {
+  type = string
 }
 

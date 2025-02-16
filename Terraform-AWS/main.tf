@@ -8,15 +8,15 @@ module "VPC" {
   project_name    = var.project_name
 }
 
-
+####################################################################################################################
 #  Main security Group
 # This module will create a SG for general purpose
 module "main_security_group" {
-  source = "./Modules/security-group"
+  source = "./Modules/Security-group"
 
   sg_name        = var.main_sg1_name
   sg_description = var.main_sg1_description
-  vpc_id         = var.vpc_id 
+  vpc_id         = module.VPC.vpc_id
   ingress_rules  = concat(var.common_ingress_rules, var.main_sg1_extra_ports)
    egress_rules  = [
     {
@@ -35,10 +35,10 @@ module "main_security_group" {
 # MAIN EC2 SECURITY GROUP
 # This module will create a SG for the main EC2 instance to run jenkins server and sonarqube etc
 module "EC2_security_group_app" {
-  source = "./Modules/security-group"
+  source = "./Modules/Security-group"
   sg_name       = var.EC2_sg_name 
   sg_description = var.EC2_sg_description
-  vpc_id        = module.vpc.vpc_id
+  vpc_id        = module.VPC.vpc_id
   ingress_rules = concat(var.common_ingress_rules, var.EC2_sg_extra_ports)
   egress_rules  = [
     {
@@ -55,10 +55,10 @@ module "EC2_security_group_app" {
 
 # Security Group for Blackrose frontend App
 module "Blackrose_security_group_app" {
-  source = "./Modules/security-group"
+  source = "./Modules/Security-group"
   sg_name       = "Blackrose"
   sg_description = "SG for Blackrose Frontend APP"
-  vpc_id        = module.vpc.vpc_id
+  vpc_id        = module.VPC.vpc_id
   ingress_rules = concat(var.common_ingress_rules, [
     {
       from_port   = 30004
@@ -79,4 +79,18 @@ module "Blackrose_security_group_app" {
   tags = {
     Name = "Blackrose"
   }
+}
+
+##########################################################################################################
+# S3 Bucket for state locking
+module "s3_bucket_for_state_locking" {
+  source = "./Modules/S3"
+  bucket_name = var.state_locking_s3_bucket_name
+  description = var.state_locking_s3_bucket_description
+}
+
+module "dynamo_db_for_state_locking" {
+  source = "./Modules/Dynamo-DB"
+  dynamo_db_name_remote-backend  = var.dynamo_db_name_remote-backend
+  hash_key = "LockID"
 }

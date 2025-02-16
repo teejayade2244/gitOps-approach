@@ -82,15 +82,4 @@ module "Blackrose_security_group_app" {
 }
 
 ##########################################################################################################
-# S3 Bucket for state locking
-module "s3_bucket_for_state_locking" {
-  source = "./Modules/S3"
-  bucket_name = var.state_locking_s3_bucket_name
-  description = var.state_locking_s3_bucket_description
-}
 
-module "dynamo_db_for_state_locking" {
-  source = "./Modules/Dynamo-DB"
-  dynamo_db_name_remote-backend  = var.dynamo_db_name_remote-backend
-  hash_key = "LockID"
-}

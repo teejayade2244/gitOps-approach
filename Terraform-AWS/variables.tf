@@ -49,6 +49,10 @@ variable "main_sg1_name" {
   type        = string
 }
 
+variable "security_group_id" {
+  description = "security group id"
+}
+
 variable "main_sg1_description" {
   description = "The description of the security group"
   type        = string
@@ -65,7 +69,6 @@ variable "main_sg1_extra_ports" {
   }))
   default = []
 }
-
 
 # EC2 Security Group 
 variable "EC2_sg_name" {
@@ -96,22 +99,28 @@ variable "EC2_sg_extra_ports" {
 }
 
 #################################################################################################
-# s3 buckets
-# Remote-Backend
-variable "state_locking_s3_bucket_name" {
-  type = string
-  description = "specify s3 bucket name for terraform state locking"
-}
-
-variable "state_locking_s3_bucket_description" {
-   type = string
-   description = "specify s3 bucket description for terraform state locking"
-}
-
-##########################################################################################################
-# Dynamo DB
-# Remote-Backend
-variable "dynamo_db_name_remote-backend" {
+# EC2 
+# Main server
+variable "ami" {
   type = string
 }
 
+variable "instance_type" {
+  type = string
+  description = "EC2 instance type for Main server"
+}
+
+variable "security_group_id" {
+  type = list
+  description = "Security Group ID for main EC2"
+}
+
+variable "key_name" {
+  default = "private-key"
+  type = string
+}
+
+variable "server_name" {
+  type = string
+  description = "EC2 server name"
+}

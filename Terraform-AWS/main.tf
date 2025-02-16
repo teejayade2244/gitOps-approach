@@ -82,4 +82,21 @@ module "Blackrose_security_group_app" {
 }
 
 ##########################################################################################################
+# EC2
+module "main_server" {
+  source = "./Modules/EC2"
+  ami           = var.ami
+  instance_type = var.instance_type
+  security_group_id = [module.EC2_security_group_app.EC2_security_group_id]
+  server_name = var.server_name
+  public_subnets_id = var.Public_subnets[1]
+}
 
+module "frontend_server" {
+  source = "./Modules/EC2"
+  ami           = var.ami
+  instance_type = "t2.micro"
+  security_group_id = [module.Blackrose_security_group_app.EC2_security_group_id]
+  server_name = var.server_name
+  public_subnets_id = var.Public_subnets[0]
+}

@@ -63,11 +63,14 @@ EC2_sg_extra_ports = [
 #######################################################################################
 # S3 Buckets
 # Remote Backend
-state_locking_s3_bucket_name = "Terraform_state_lock_remote-backend"
-state_locking_s3_bucket_description = "This a s3 bucket to store terraform state file"
 
 ########################################################################################
 # Dynamo DB
 # Remote Backend
-dynamo_db_name_remote-backend = "Terraform_state_remote-backend"
 
+##########################################################################################
+# EC2
+# main server
+ami = "ami-091f18e98bc129c4e"
+instance_type = "t2.large"
+server_name = "Main-EC2-Server"

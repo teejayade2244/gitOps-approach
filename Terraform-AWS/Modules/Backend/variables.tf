@@ -1,6 +1,7 @@
 variable "dynamo_db_name_remote-backend" {
   type = string
-  description = "Dynamo-db name for the s3 state lock"
+  description = "Dynamo-db name for the terraform state file lock"
+  default = "terraform_state_remote-backend"
 }
 
 variable "hash_key" {
@@ -11,9 +12,11 @@ variable "hash_key" {
 variable "bucket_name" {
   type = string
   description = "Specifies the bucket name to be created"
+  default = "terraform-state-remote-backend-bucket"
 }
 
-variable "description" {
+variable "bucket_description" {
    type = string
-  description = "bucket description"
+   description = "bucket description"
+   default = "s3-bucket-for-remote-backend-state"
 }

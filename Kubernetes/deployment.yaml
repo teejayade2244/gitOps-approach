@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: counter-project
+    namespace: counter # too add the file to a ns
+spec:
+    selector:
+        matchLabels:
+            app: counter-project
+            type: front-end
+    replicas: 1
+    template:
+        metadata:
+            name: counter-project
+            labels:
+                app: counter-project
+                type: front-end
+        spec:
+            containers:
+                - name: counter-project
+                  image: teejay4125/counter-project:352921fa2ee144ada1305e8644dcd94bb9a22c13
+                  ports:
+                      - containerPort: 3000
+                      
+
+                     

@@ -18,7 +18,7 @@ spec:
         spec:
             containers:
                 - name: counter-project
-                  image: 982534392122.dkr.ecr.eu-west-2.amazonaws.com/counter-project:39068a90328e5993c8f923c2ba095e809ee6ecdc
+                  image: 982534392122.dkr.ecr.eu-west-2.amazonaws.com/counter-project:b212819ffff0b09f893f3a2bb5f5260863a7913e
                   ports:
                     - containerPort: 3000
                       

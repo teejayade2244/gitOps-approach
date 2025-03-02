@@ -21,6 +21,9 @@ spec:
                   image: 982534392122.dkr.ecr.eu-west-2.amazonaws.com/counter-project:907fa828d080c46c66d3397761bbb8804838eb7f
                   ports:
                     - containerPort: 3000
+            imagePullSecrets:
+                - name: ecr-secret
+
                       
 
                      

@@ -18,11 +18,19 @@ spec:
         spec:
             containers:
                 - name: counter-project
-                  image: 982534392122.dkr.ecr.eu-west-2.amazonaws.com/counter-project:907fa828d080c46c66d3397761bbb8804838eb7f
+                  image: 982534392122.dkr.ecr.eu-west-2.amazonaws.com/counter-project:39068a90328e5993c8f923c2ba095e809ee6ecdc
                   ports:
                     - containerPort: 3000
-            imagePullSecrets:
-                - name: ecr-secret
+                  volumeMounts:
+                    - name: secret-volume
+                      mountPath: "/etc/secret"
+                      readOnly: true
+            volumes:
+                - name: secret-volume
+                  secret:
+                    secretName: ecr-secret
+            
+
 
                       
 

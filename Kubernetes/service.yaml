@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
     name: counter-service
-    namespace: counter
+    namespace: staging
 spec:
     type: NodePort
     # links the service to the pods

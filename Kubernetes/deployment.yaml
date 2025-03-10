@@ -8,7 +8,7 @@ spec:
         matchLabels:
             app: counter-project
             type: front-end
-    replicas: 2
+    replicas: 3
     template:
         metadata:
             name: counter-project

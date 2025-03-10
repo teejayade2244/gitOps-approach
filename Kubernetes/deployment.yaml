@@ -22,7 +22,7 @@ spec:
                   ports:
                     - containerPort: 3000
             # imagePullSecrets:
-                - name: ecr-secret
+                # - name: ecr-secret
                   volumeMounts:
                     - name: secret-volume
                       mountPath: "/etc/secret"

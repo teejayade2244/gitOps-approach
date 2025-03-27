@@ -1,26 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: counter-project
-    namespace: counter # too add the file to a ns
+    name: core-serve-frontend
+    namespace: staging # too add the file to a ns
 spec:
     selector:
         matchLabels:
-            app: counter-project
+            app: core-serve-frontend
             type: front-end
-    replicas: 1
+    replicas: 3
     template:
         metadata:
-            name: counter-project
+            name: core-serve-frontend
             labels:
-                app: counter-project
+                app: core-serve-frontend
                 type: front-end
         spec:
             containers:
-                - name: counter-project
-                  image: 982534392122.dkr.ecr.eu-west-2.amazonaws.com/counter-project:907fa828d080c46c66d3397761bbb8804838eb7f
+                - name: core-serve-frontend
+                  image: 982534392122.dkr.ecr.eu-west-2.amazonaws.com/core-serve-frontend-app:29356b3c6bea0b8b36bccdf5e57f9b0fe9d12600
                   ports:
                     - containerPort: 3000
+            # imagePullSecrets:
+                # - name: ecr-secret
+            #       volumeMounts:
+            #         - name: secret-volume
+            #           mountPath: "/etc/secret"
+            #           readOnly: true
+            # volumes:
+            #     - name: secret-volume
+            #       secret:
+            #         secretName: ecr-secret
+            
+
+
                       
 
                      

@@ -21,8 +21,8 @@ spec:
                   image: 982534392122.dkr.ecr.eu-west-2.amazonaws.com/core-serve-frontend-app:29356b3c6bea0b8b36bccdf5e57f9b0fe9d12600
                   ports:
                     - containerPort: 3000
-            # imagePullSecrets:
-                # - name: ecr-secret
+            imagePullSecrets:
+                - name: ecr-secret
             #       volumeMounts:
             #         - name: secret-volume
             #           mountPath: "/etc/secret"

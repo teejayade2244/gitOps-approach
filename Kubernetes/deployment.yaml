@@ -18,7 +18,7 @@ spec:
         spec:
             containers:
                 - name: core-serve-frontend
-                  image: 911167885172.dkr.ecr.eu-west-2.amazonaws.com/core-serve-frontend-app:PR-78-2
+                  image: 911167885172.dkr.ecr.eu-west-2.amazonaws.com/core-serve-frontend-app:PR-79-1
                   ports:
                     - containerPort: 3000
             imagePullSecrets:
